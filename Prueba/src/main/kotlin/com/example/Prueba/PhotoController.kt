@@ -37,9 +37,9 @@ class PhotoController (private val photoService: PhotoService){
         } ?: ResponseEntity.notFound().build()
     }
     @DeleteMapping("/{id}")
-    fun deletePhoto(@PathVariable id: Long):ResponseEntity<Void>{
+    fun deletePhoto(@PathVariable id: Long):ResponseEntity<String>{
         return if (photoService.deletePhoto(id)){
-            ResponseEntity.noContent().build()
+            ResponseEntity.ok("Se ha eliminado la foto con id $id")
         }
         else{
             ResponseEntity.notFound().build()
