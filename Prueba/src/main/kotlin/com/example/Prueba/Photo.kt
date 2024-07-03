@@ -6,6 +6,7 @@ import jakarta.persistence.Id
 
 @Entity
 data class Photo(
+    val albumId: Long = 0,
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long = 0,
