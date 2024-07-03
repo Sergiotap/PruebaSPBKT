@@ -1,4 +1,4 @@
-package com.example.Prueba
+package com.example.Prueba.Entities
 
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue

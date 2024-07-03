@@ -1,5 +1,8 @@
-package com.example.Prueba
+package com.example.Prueba.Controllers
 
+import com.example.Prueba.Entities.Album
+import com.example.Prueba.Repositories.AlbumRepository
+import com.example.Prueba.Servicies.AlbumService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -14,32 +17,31 @@ import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@RequestMapping("/api/photos")
-class PhotoController (private val photoService: PhotoService){
+@RequestMapping("/api/albums")
+class AlbumController (private val albumService: AlbumService) {
     @Autowired
-    private lateinit var photoRepository: PhotoRepository
+    private lateinit var alBumRepository: AlbumRepository
     @GetMapping("/")
-    fun getAllPhotos(): List<Photo> = photoService.getAllPhotos()
+    fun getAllAlbums(): List<Album> = albumService.getAllAlbums()
     @GetMapping("/{id}")
-    fun getPhotoById(@PathVariable id:Long):ResponseEntity<Photo>{
-        return photoService.getPhotoById(id).let {
+    fun getAlbumById(@PathVariable id:Long):ResponseEntity<Album>{
+        return albumService.getAlbumById(id).let {
             ResponseEntity.ok(it)
-        } ?: ResponseEntity.notFound().build()
-
+        }
     }
     @PostMapping("/")
     @ResponseStatus(HttpStatus.CREATED)
-    fun createPhoto(@RequestBody photo: Photo):Photo=photoService.createPhoto(photo)
+    fun createAlbum(@RequestBody album: Album): Album = albumService.createAlbum(album)
     @PutMapping("/{id}")
-    fun updatePhoto(@PathVariable id:Long, @RequestBody updatedPhoto:Photo):ResponseEntity<Photo>{
-        return photoService.updatePhoto(id, updatedPhoto)?.let {
+    fun updateAlbum(@PathVariable id: Long, @RequestBody updatedAlbum: Album): ResponseEntity<Album>{
+        return albumService.updateAlbum(id, updatedAlbum)?.let {
             ResponseEntity.ok(it)
         } ?: ResponseEntity.notFound().build()
     }
     @DeleteMapping("/{id}")
-    fun deletePhoto(@PathVariable id: Long):ResponseEntity<String>{
-        return if (photoService.deletePhoto(id)){
-            ResponseEntity.ok("Se ha eliminado la foto con id $id")
+    fun deleteAlbum(@PathVariable id: Long):ResponseEntity<String>{
+        return if (albumService.deleteAlbum(id)){
+            ResponseEntity.ok("Se ha eliminado el álbum con id $id")
         }
         else{
             ResponseEntity.notFound().build()
