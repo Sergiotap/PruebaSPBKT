@@ -9,7 +9,17 @@ data class Photo(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long = 0,
-    val title: String,
-    val url: String,
-    val thumbnailUrl: String
+    var title: String="",
+    var url: String="",
+    var thumbnailUrl: String=""
 )
+/*
+{
+    constructor(title: String, url: String, thumbnailUrl: String) : this(
+        id = 0,
+        title = title,
+        url = url,
+        thumbnailUrl = thumbnailUrl
+    )
+}
+*/
