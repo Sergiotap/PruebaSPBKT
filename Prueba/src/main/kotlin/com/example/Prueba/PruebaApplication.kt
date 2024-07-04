@@ -1,7 +1,7 @@
 package com.example.Prueba
 
-import com.example.Prueba.Servicies.AlbumService
-import com.example.Prueba.Servicies.PhotoService
+import com.example.Prueba.Services.AlbumService
+import com.example.Prueba.Services.PhotoService
 import org.springframework.boot.ApplicationRunner
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

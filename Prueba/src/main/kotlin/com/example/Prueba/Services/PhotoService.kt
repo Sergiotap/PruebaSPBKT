@@ -1,6 +1,5 @@
-package com.example.Prueba.Servicies
+package com.example.Prueba.Services
 
-import com.example.Prueba.Entities.Album
 import com.example.Prueba.Entities.Photo
 import com.example.Prueba.Repositories.PhotoRepository
 import org.slf4j.LoggerFactory

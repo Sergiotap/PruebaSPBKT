@@ -2,7 +2,7 @@ package com.example.Prueba.Controllers
 
 import com.example.Prueba.Entities.Album
 import com.example.Prueba.Repositories.AlbumRepository
-import com.example.Prueba.Servicies.AlbumService
+import com.example.Prueba.Services.AlbumService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity

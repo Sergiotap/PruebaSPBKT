@@ -1,11 +1,10 @@
-package com.example.Prueba.Servicies
+package com.example.Prueba.Services
 
 import com.example.Prueba.Entities.Album
 import com.example.Prueba.Repositories.AlbumRepository
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
 import org.springframework.web.client.RestTemplate
-import org.springframework.web.client.getForObject
 
 @Service
 class AlbumService (private val restTemplate:RestTemplate, private val albumRepository: AlbumRepository) {

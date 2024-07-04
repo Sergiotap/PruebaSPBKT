@@ -1,10 +1,7 @@
 package com.example.Prueba.Controllers
 
-import com.example.Prueba.Entities.Album
 import com.example.Prueba.Entities.Photo
-import com.example.Prueba.Repositories.PhotoRepository
-import com.example.Prueba.Servicies.PhotoService
-import org.springframework.beans.factory.annotation.Autowired
+import com.example.Prueba.Services.PhotoService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.DeleteMapping
@@ -20,8 +17,6 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/api/photos")
 class PhotoController (private val photoService: PhotoService){
-    @Autowired
-    private lateinit var photoRepository: PhotoRepository
     @GetMapping("/")
     fun getAllPhotos(): List<Photo> = photoService.getAllPhotos()
     @GetMapping("/{id}")
