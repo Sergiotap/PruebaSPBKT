@@ -11,7 +11,7 @@ data class Photo(
     val albumId: Long = 0,
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long = 0,
+    var id: Long = 0,
     var title: String="",
     var url: String="",
     var thumbnailUrl: String=""

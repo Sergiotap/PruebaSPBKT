@@ -42,7 +42,8 @@ class AlbumController (private val albumService: AlbumService) {
         } else {
             ResponseEntity.notFound().build()
         }
-    }    @DeleteMapping("/{id}")
+    }
+    @DeleteMapping("/{id}")
     fun deleteAlbum(@PathVariable id: Long):ResponseEntity<String>{
         return if (albumService.deleteAlbum(id)){
             ResponseEntity.ok("Se ha eliminado el álbum con id $id")

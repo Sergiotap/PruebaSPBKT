@@ -1,5 +1,6 @@
 package com.example.Prueba.Controllers
 
+import com.example.Prueba.Entities.Album
 import com.example.Prueba.Entities.Photo
 import com.example.Prueba.Repositories.PhotoRepository
 import com.example.Prueba.Servicies.PhotoService
@@ -34,11 +35,17 @@ class PhotoController (private val photoService: PhotoService){
     @ResponseStatus(HttpStatus.CREATED)
     fun createPhoto(@RequestBody photo: Photo): Photo =photoService.createPhoto(photo)
     @PutMapping("/{id}")
-    fun updatePhoto(@PathVariable id:Long, @RequestBody updatedPhoto: Photo):ResponseEntity<Photo>{
-        return photoService.updatePhoto(id, updatedPhoto)?.let {
-            ResponseEntity.ok(it)
-        } ?: ResponseEntity.notFound().build()
+    fun updatePhoto(@PathVariable id: Long, @RequestBody updatedPhoto: Photo): ResponseEntity<Photo> {
+        val existingAlbum = photoService.getPhotoById(id)
+        return if (existingAlbum != null) {
+            updatedPhoto.id = id
+            val updated = photoService.updatePhoto(id, updatedPhoto)
+            ResponseEntity.ok(updated)
+        } else {
+            ResponseEntity.notFound().build()
+        }
     }
+
     @DeleteMapping("/{id}")
     fun deletePhoto(@PathVariable id: Long):ResponseEntity<String>{
         return if (photoService.deletePhoto(id)){
