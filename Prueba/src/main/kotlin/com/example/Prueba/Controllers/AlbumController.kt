@@ -33,12 +33,16 @@ class AlbumController (private val albumService: AlbumService) {
     @ResponseStatus(HttpStatus.CREATED)
     fun createAlbum(@RequestBody album: Album): Album = albumService.createAlbum(album)
     @PutMapping("/{id}")
-    fun updateAlbum(@PathVariable id: Long, @RequestBody updatedAlbum: Album): ResponseEntity<Album>{
-        return albumService.updateAlbum(id, updatedAlbum)?.let {
-            ResponseEntity.ok(it)
-        } ?: ResponseEntity.notFound().build()
-    }
-    @DeleteMapping("/{id}")
+    fun updateAlbum(@PathVariable id: Long, @RequestBody updatedAlbum: Album): ResponseEntity<Album> {
+        val existingAlbum = albumService.getAlbumById(id)
+        return if (existingAlbum != null) {
+            updatedAlbum.id=id
+            val updated = albumService.updateAlbum(id, updatedAlbum)
+            ResponseEntity.ok(updated)
+        } else {
+            ResponseEntity.notFound().build()
+        }
+    }    @DeleteMapping("/{id}")
     fun deleteAlbum(@PathVariable id: Long):ResponseEntity<String>{
         return if (albumService.deleteAlbum(id)){
             ResponseEntity.ok("Se ha eliminado el álbum con id $id")
@@ -47,5 +51,4 @@ class AlbumController (private val albumService: AlbumService) {
             ResponseEntity.notFound().build()
         }
     }
-
 }

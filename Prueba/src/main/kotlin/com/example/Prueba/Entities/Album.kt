@@ -8,9 +8,12 @@ import jakarta.persistence.Id
 
 @Entity
 data class Album(
+    val userId: Long,
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long = 0,
-    val title: String = "",
-    val userId: Long = 0
+    var id: Long = 0,
+    val title: String
 )
+{
+    constructor(): this(0, 0, "")
+}
