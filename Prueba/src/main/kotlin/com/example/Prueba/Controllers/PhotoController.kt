@@ -21,7 +21,7 @@ class PhotoController (private val photoService: PhotoService){
     fun getAllPhotos(): List<Photo> = photoService.getAllPhotos()
     @GetMapping("/{id}")
     fun getPhotoById(@PathVariable id:Long):ResponseEntity<Photo>{
-        return photoService.getPhotoById(id).let {
+        return photoService.getPhotoById(id)?.let {
             ResponseEntity.ok(it)
         } ?: ResponseEntity.notFound().build()
 
