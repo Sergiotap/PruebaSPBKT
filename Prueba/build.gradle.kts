@@ -1,5 +1,3 @@
-import org.springframework.boot.gradle.tasks.run.BootRun
-import org.gradle.api.tasks.testing.Test
 import org.springframework.boot.gradle.dsl.SpringBootExtension
 
 plugins {
@@ -20,6 +18,8 @@ java {
 
 repositories {
 	mavenCentral()
+	maven { url = uri("https://repo.spring.io/milestone") }
+	maven { url = uri("https://repo.spring.io/snapshot") }
 }
 
 dependencies {
@@ -29,17 +29,19 @@ dependencies {
 	implementation("com.h2database:h2")
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 
-	testImplementation("org.springframework.boot:spring-boot-starter-test")
-	testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
+	testImplementation("org.springframework.boot:spring-boot-starter-test") {
+		exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
+	}
+	testImplementation("org.jetbrains.kotlin:kotlin-test-junit")
 	testImplementation("org.junit.jupiter:junit-jupiter-api")
 	testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
 	testImplementation("org.mockito:mockito-core")
-	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+	testImplementation("org.mockito:mockito-inline:5.0.0")
+	testImplementation("org.mockito:mockito-junit-jupiter")
 }
 
 configure<SpringBootExtension> {
-	// Configuración de H2
-	tasks.withType<BootRun> {
+	tasks.withType<org.springframework.boot.gradle.tasks.run.BootRun> {
 		systemProperty("spring.datasource.url", "jdbc:h2:mem:testdb")
 		systemProperty("spring.datasource.driverClassName", "org.h2.Driver")
 		systemProperty("spring.datasource.username", "sa")
@@ -51,4 +53,7 @@ configure<SpringBootExtension> {
 
 tasks.withType<Test> {
 	useJUnitPlatform()
+	testLogging {
+		events("passed", "skipped", "failed")
+	}
 }

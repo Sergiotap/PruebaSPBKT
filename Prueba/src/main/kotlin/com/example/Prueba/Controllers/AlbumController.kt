@@ -25,8 +25,11 @@ class AlbumController (private val albumService: AlbumService) {
     fun getAllAlbums(): List<Album> = albumService.getAllAlbums()
     @GetMapping("/{id}")
     fun getAlbumById(@PathVariable id:Long):ResponseEntity<Album>{
-        return albumService.getAlbumById(id).let {
-            ResponseEntity.ok(it)
+        val album = albumService.getAlbumById(id)
+        return if (album != null) {
+            ResponseEntity.ok(album)
+        } else {
+            ResponseEntity.notFound().build()
         }
     }
     @PostMapping("/")
@@ -34,10 +37,9 @@ class AlbumController (private val albumService: AlbumService) {
     fun createAlbum(@RequestBody album: Album): Album = albumService.createAlbum(album)
     @PutMapping("/{id}")
     fun updateAlbum(@PathVariable id: Long, @RequestBody updatedAlbum: Album): ResponseEntity<Album> {
-        val existingAlbum = albumService.getAlbumById(id)
-        return if (existingAlbum != null) {
-            updatedAlbum.id=id
-            val updated = albumService.updateAlbum(id, updatedAlbum)
+        updatedAlbum.id=id
+        val updated = albumService.updateAlbum(id, updatedAlbum)
+        return if (updated != null) {
             ResponseEntity.ok(updated)
         } else {
             ResponseEntity.notFound().build()
