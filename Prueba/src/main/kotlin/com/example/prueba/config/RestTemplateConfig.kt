@@ -1,4 +1,4 @@
-package com.example.Prueba
+package com.example.prueba.config
 
 import org.springframework.boot.web.client.RestTemplateBuilder
 import org.springframework.context.annotation.Bean

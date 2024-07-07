@@ -1,17 +1,13 @@
-package com.example.Prueba.PhotoTest
+package com.example.prueba.PhotoTest
 
-import com.example.Prueba.Controllers.PhotoController
-import com.example.Prueba.Entities.Photo
-import com.example.Prueba.Services.PhotoService
+import com.example.prueba.controllers.PhotoController
+import com.example.prueba.entities.Photo
+import com.example.prueba.services.PhotoService
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.mockito.Mockito
-import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import kotlin.test.assertEquals
-import kotlin.test.assertFalse
-import kotlin.test.assertNotNull
-import kotlin.test.assertTrue
 
 class PhotoControllerTest {
 

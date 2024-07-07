@@ -1,8 +1,8 @@
-package com.example.Prueba.Controllers
+package com.example.prueba.controllers
 
-import com.example.Prueba.Entities.Album
-import com.example.Prueba.Repositories.AlbumRepository
-import com.example.Prueba.Services.AlbumService
+import com.example.prueba.entities.Album
+import com.example.prueba.repositories.AlbumRepository
+import com.example.prueba.services.AlbumService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity

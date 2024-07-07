@@ -1,7 +1,7 @@
-package com.example.Prueba.Controllers
+package com.example.prueba.controllers
 
-import com.example.Prueba.Entities.Photo
-import com.example.Prueba.Services.PhotoService
+import com.example.prueba.entities.Photo
+import com.example.prueba.services.PhotoService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.DeleteMapping

@@ -1,6 +1,6 @@
-package com.example.Prueba.Repositories
+package com.example.prueba.repositories
 
-import com.example.Prueba.Entities.Album
+import com.example.prueba.entities.Album
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 

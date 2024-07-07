@@ -1,8 +1,8 @@
-package com.example.Prueba.PhotoTest
+package com.example.prueba.PhotoTest
 
-import com.example.Prueba.Entities.Photo
-import com.example.Prueba.Repositories.PhotoRepository
-import com.example.Prueba.Services.PhotoService
+import com.example.prueba.entities.Photo
+import com.example.prueba.repositories.PhotoRepository
+import com.example.prueba.services.PhotoService
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test

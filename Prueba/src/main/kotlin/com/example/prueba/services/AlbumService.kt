@@ -1,7 +1,7 @@
-package com.example.Prueba.Services
+package com.example.prueba.services
 
-import com.example.Prueba.Entities.Album
-import com.example.Prueba.Repositories.AlbumRepository
+import com.example.prueba.entities.Album
+import com.example.prueba.repositories.AlbumRepository
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
 import org.springframework.web.client.RestTemplate

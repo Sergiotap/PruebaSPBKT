@@ -1,8 +1,8 @@
-package com.example.Prueba.AlbumTest
+package com.example.prueba.AlbumTest
 
-import com.example.Prueba.Entities.Album
-import com.example.Prueba.Repositories.AlbumRepository
-import com.example.Prueba.Services.AlbumService
+import com.example.prueba.entities.Album
+import com.example.prueba.repositories.AlbumRepository
+import com.example.prueba.services.AlbumService
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test

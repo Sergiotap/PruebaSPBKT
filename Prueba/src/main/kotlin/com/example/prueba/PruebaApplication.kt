@@ -1,11 +1,12 @@
-package com.example.Prueba
+package com.example.prueba
 
-import com.example.Prueba.Services.AlbumService
-import com.example.Prueba.Services.PhotoService
+import com.example.prueba.services.AlbumService
+import com.example.prueba.services.PhotoService
 import org.springframework.boot.ApplicationRunner
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 import org.springframework.context.annotation.Bean
+
 @SpringBootApplication
 class PruebaApplication {
 	@Bean
