@@ -1,7 +1,37 @@
-Se utiliza Java 17 y Spring Boot 2.5.6 para funcionar con Swagger 2.
-Como IDE se usa Intellij Idea Community por la facilidad de usar proyectos con Kotlin con este IDE.
-Como versión de Kotlin se usa 1.9.24 por ser justo la anterior a la última versión de este lenguaje para evitar de esa forma los errores que pueda contener la última (2.0) por ser demasiado reciente.
-Como naveador para las pruebas he decidido usar Firefox ya que es mi navegador predeterminado.
-Se decide usar H2Database ya que permite montar una base de datos de forma rápida y sin dificultad.
-Para los cambios del CRUD de los distintos métodos HTTP se decide usar Postman por la sencillez de uso.
-Como versión para JUnit se decide usar JUnit 5 por ser la más novedosa.
+API with JSON Placeholder using Albums and Photos.
+## Decissions
+
+For developing this project I chose **Intellij Idea Community** because of the facilities of this IDE for developing with Kotlin.
+
+I chose the **Spring Boot** version 2.5.6 due to compatibility with **Swagger UI** 2.
+
+I chose **Java** 17 for compatibility reasons with **Spring Boot** 2.5.6.
+
+## Installation
+```sh
+$ git clone https://github.com/Sergiotap/PruebaSPBKT
+$ cd Prueba
+```
+You could use **Intellij Idea Community** to run this project. You can download it here:
+https://www.jetbrains.com/idea/download/?section=windows.
+
+You also could use **Postman** to fetch the API's endpoints. You can download it here:
+https://www.postman.com/downloads/.
+
+You should configure your ```JAVA_HOME``` evvironment variable to use the jdk version 17. You can download it here:
+https://www.oracle.com/es/java/technologies/downloads/#jdk17-windows.
+
+## Usage
+
+Firstly, you have to run the file called ```PruebaAplication.kt```
+
+To execute the tests you can run ```AlbumControllerTest```, ```AlbumServiceTest```, ```PhotoControllerTest``` and ```PhotoServiceTest```.
+
+To access albums you can fetch https://localhost:8080/api/albums/.
+
+To access photos you can fetch https://localhost:8080/api/photos/.
+
+To access swagger ui you can go to https://localhost:8080/swagger-ui.html.
+
+## Creator
+[Sergio Tapia Rodríguez](https://github.com/Sergiotap)
