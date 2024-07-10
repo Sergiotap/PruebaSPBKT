@@ -2,12 +2,13 @@ package com.example.prueba.services
 
 import com.example.prueba.entities.Album
 import com.example.prueba.repositories.AlbumRepository
+import com.example.prueba.repositories.PhotoRepository
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
 import org.springframework.web.client.RestTemplate
 
 @Service
-class AlbumService (private val restTemplate:RestTemplate, private val albumRepository: AlbumRepository) {
+class AlbumService (private val restTemplate:RestTemplate, private val albumRepository: AlbumRepository, private val photoRepository: PhotoRepository) {
     private val logger = LoggerFactory.getLogger(AlbumService::class.java)
     fun getAllAlbums(): List<Album> = albumRepository.findAll()
     fun getAlbumById(id:Long): Album? = albumRepository.findById(id).orElse(null)
@@ -35,6 +36,7 @@ class AlbumService (private val restTemplate:RestTemplate, private val albumRepo
         if (response != null) {
             logger.info("Fetched ${response.size} albums from $url")
             response.forEach { album ->
+                album.photos=photoRepository.getPhotosByAlbumId(album.id).toMutableList()
                 logger.info("Saving album: $album")
             }
             albumRepository.saveAll(response.toList())

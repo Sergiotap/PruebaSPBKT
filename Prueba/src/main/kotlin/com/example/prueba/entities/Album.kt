@@ -1,9 +1,6 @@
 package com.example.prueba.entities
 
-import javax.persistence.GeneratedValue
-import javax.persistence.GenerationType
-import javax.persistence.Id
-import javax.persistence.Entity
+import javax.persistence.*
 
 
 @Entity
@@ -12,8 +9,10 @@ data class Album(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long = 0,
-    val title: String
+    val title: String,
+    @OneToMany(mappedBy = "albumId", cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
+    var photos: MutableList<Photo> = mutableListOf()
 )
 {
-    constructor(): this(0, 0, "")
+    constructor(): this(0, 0, "", mutableListOf())
 }

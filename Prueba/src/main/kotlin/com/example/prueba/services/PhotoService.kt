@@ -34,9 +34,11 @@ class PhotoService(private val restTemplate: RestTemplate, private val photoRepo
         val response = restTemplate.getForObject(url, Array<Photo>::class.java)
         if (response != null) {
             logger.info("Fetched ${response.size} photos from $url")
-            response.forEach { photo ->
-                logger.info("Saving album: $photo")
-            }
+//            response.forEach { photo ->
+//
+//                //logger.info("Saving photo: $photo")
+//            }
+            logger.info("MIRA MI TAMAÑO: "+ response.size.toString())
             photoRepository.saveAll(response.toList())
         } else {
             logger.warn("Failed to fetch photos from $url")

@@ -12,8 +12,8 @@ class PruebaApplication {
 	@Bean
 	fun run(albumService: AlbumService, photoService: PhotoService) = ApplicationRunner {
 		println("Executing run method...")
-		albumService.fetchAndSaveAlbums()
 		photoService.fetchAndSavePhotos()
+		albumService.fetchAndSaveAlbums()
 	}
 }
 fun main(args: Array<String>) {
